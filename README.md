@@ -1,8 +1,7 @@
 
 # Title Of Project
 
-__[Knight Travails]__
-(https://www.theodinproject.com/lessons/ruby-knights-travails)
+__[Knight Travails](https://www.theodinproject.com/lessons/ruby-knights-travails)__
 
 Part of [The Odin Project](https://www.theodinproject.com/) Curriculum
 
