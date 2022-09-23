@@ -23,7 +23,7 @@ Part of [The Odin Project](https://www.theodinproject.com/) Curriculum
     [4,3]
 ```
 ## Planning
-### The Idea
+### The Approach
 I will start by creating a knight class which takes the dimension of the board, the start and end of the knight as parameters. The knight class will contain a function that populates the x by y matrix with hop distance from the knight. It will look like this:
 || A | B | C | D | E | F | G | H |
 |--|--|--|--|--|--|--|--|--|
@@ -37,7 +37,7 @@ I will start by creating a knight class which takes the dimension of the board, 
 |**1**| 0 | 0 | 0 | 0 | 0 | 0 |0 |0 |
 ||||||||||
 
-The board above will be represented in the program as `distance-board` array. When the knight is instantiated, and the start and end is defined, 0 will represent the starting cell.
+The board above will be represented in the program as `distance_board` array. When the knight is instantiated, and the start and end is defined, 0 will represent the starting cell.
 
 || A | B | C | D | E | F | G | H |
 |--|--|--|--|--|--|--|--|--|
@@ -50,3 +50,78 @@ The board above will be represented in the program as `distance-board` array. Wh
 |**2**| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 |
 |**1**| 3 | 4 | 3 | 4 | 3 | 4 | 3 | 4 |
 ||||||||||
+
+
+here, D5 represents the starting point. From here, we can now create our graph.
+
+say we have the end E4, the head of node will be the end.
+
+|| A | B | C | D | E | F | G | H |
+|--|--|--|--|--|--|--|--|--|
+|**8**| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 |
+|**7**| 3 | 4 | 1 | 2 | 1 | 4 | 3 | 2 |
+|**6**| 2 | 1 | 2 | 3 | 2 | 1 | 2 | 3 |
+|**5**| 3 | 2 | 3 | 0 | 3 | 2 | 3 | 2 |
+|**4**| 2 | 1 | 2 | 3 |( 2 )| 1 | 2 | 3 |
+|**3**| 3 | 4 | 1 | 2 | 1 | 4 | 3 | 2 |
+|**2**| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 |
+|**1**| 3 | 4 | 3 | 4 | 3 | 4 | 3 | 4 |
+||||||||||
+
+We can choose 8 valid next nodes from here. Some of it is greater than current node value 2, and some of it is less than 2. No valid node is equal to the value of itself.
+
+The greater than 2, which is 3, just means that the knight can move to that point. But it will also lead us farther from the start. The only option is to go to node where the value is less than 2.
+
+|| A | B | C | D | E | F | G | H |
+|--|--|--|--|--|--|--|--|--|
+|**8**| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 |
+|**7**| 3 | 4 | 1 | 2 | 1 | 4 | 3 | 2 |
+|**6**| 2 | 1 | 2 | 3 | 2 | <1> | 2 | 3 |
+|**5**| 3 | 2 | 3 | 0 | 3 | 2 | 3 | 2 |
+|**4**| 2 | 1 | 2 | 3 |( 2 )| 1 | 2 | 3 |
+|**3**| 3 | 4 | <1> | 2 | 1 | 4 | 3 | 2 |
+|**2**| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 |
+|**1**| 3 | 4 | 3 | 4 | 3 | 4 | 3 | 4 |
+||||||||||
+
+It should not matter which node we pick here. For convenience, the program will pick whichever comes first.
+
+|| A | B | C | D | E | F | G | H |
+|--|--|--|--|--|--|--|--|--|
+|**8**| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 |
+|**7**| 3 | 4 | 1 | 2 | 1 | 4 | 3 | 2 |
+|**6**| 2 | 1 | 2 | 3 | 2 | 1 | 2 | 3 |
+|**5**| 3 | 2 | 3 | 0 | 3 | 2 | 3 | 2 |
+|**4**| 2 | 1 | 2 | 3 |( 2 ) -> C3| 1 | 2 | 3 |
+|**3**| 3 | 4 | ( 1 ) | 2 | 1 | 4 | 3 | 2 |
+|**2**| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 |
+|**1**| 3 | 4 | 3 | 4 | 3 | 4 | 3 | 4 |
+||||||||||
+
+And so on...
+
+|| A | B | C | D | E | F | G | H |
+|--|--|--|--|--|--|--|--|--|
+|**8**| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 |
+|**7**| 3 | 4 | 1 | 2 | 1 | 4 | 3 | 2 |
+|**6**| 2 | 1 | 2 | 3 | 2 | 1 | 2 | 3 |
+|**5**| 3 | 2 | 3 | <0> | 3 | 2 | 3 | 2 |
+|**4**| 2 | 1 | 2 | 3 |( 2 ) -> C3| 1 | 2 | 3 |
+|**3**| 3 | 4 | ( 1 ) | 2 | 1 | 4 | 3 | 2 |
+|**2**| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 |
+|**1**| 3 | 4 | 3 | 4 | 3 | 4 | 3 | 4 |
+||||||||||
+
+|| A | B | C | D | E | F | G | H |
+|--|--|--|--|--|--|--|--|--|
+|**8**| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 |
+|**7**| 3 | 4 | 1 | 2 | 1 | 4 | 3 | 2 |
+|**6**| 2 | 1 | 2 | 3 | 2 | 1 | 2 | 3 |
+|**5**| 3 | 2 | 3 | ( 0 ) | 3 | 2 | 3 | 2 |
+|**4**| 2 | 1 | 2 | 3 |(2) -> C3| 1 | 2 | 3 |
+|**3**| 3 | 4 | (1) -> D5 | 2 | 1 | 4 | 3 | 2 |
+|**2**| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 |
+|**1**| 3 | 4 | 3 | 4 | 3 | 4 | 3 | 4 |
+||||||||||
+
+When the value of the current node is equal to zero, this method will return a linked list.

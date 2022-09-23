@@ -27,3 +27,4 @@ end
 
 my_game_board = GameBoard.new(8, 8)
 p my_game_board.board[0][0]
+my_knight = Knight.new()
