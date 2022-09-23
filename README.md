@@ -36,7 +36,9 @@ I will start by creating a knight class which takes the dimension of the board, 
 |**2**| 0 | 0 | 0 | 0 | 0 | 0 |0 |0 |
 |**1**| 0 | 0 | 0 | 0 | 0 | 0 |0 |0 |
 ||||||||||
+
 The board above will be represented in the program as `distance-board` array. When the knight is instantiated, and the start and end is defined, 0 will represent the starting cell.
+
 || A | B | C | D | E | F | G | H |
 |--|--|--|--|--|--|--|--|--|
 |**8**| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 |
