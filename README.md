@@ -1,5 +1,5 @@
 
-# Title Of Project
+# Knight Travails Journal
 
 __[Knight Travails](https://www.theodinproject.com/lessons/ruby-knights-travails)__
 
