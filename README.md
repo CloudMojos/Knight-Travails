@@ -137,7 +137,11 @@ To trace the path from the origin/start to the target/end, I had to reverse the 
 
 ## Final Thoughts
 
-I am not proud of my project in this one. I think I haven't been able to optimize my code to make it shorter and more efficient. It works, yes, but I can't help but to think if I could make the code better. I will move on for now, maybe look into this repository after some time with a fresh and more experienced perspective.
+I am not proud of my code in this one. I think I haven't been able to optimize my code to make it shorter and more efficient. It works, yes, but I can't help but to think if I could make the code better. I will move on for now, maybe look into this repository after some time with a fresh and more experienced perspective.
 
-### My Other Projects
+## My Other Projects
+
+[Binary Search Tree](https://github.com/CloudMojos/ruby-binary-search-tree)
+[Linked List](https://github.com/CloudMojos/ruby-linked-list)
+
 
