@@ -124,3 +124,20 @@ And so on...
 ||||||||||
 
 When the value of the current node is equal to zero, this method will return a linked list.
+
+## The Execution
+
+### Populating the 2D Distance Board
+Adding hop distance to each cell in the `@distance_board` has proven itself to be much more difficult than I initially thought.
+
+`@distance_board` is populated with the `#build_distance_board` method. The idea is to store the hop distance in the `queue`, along with the location (x and y) of a valid cell. The hop distance adds one each time it has hopped on.
+
+### Tracing the Path
+To trace the path from the origin/start to the target/end, I had to reverse the array returned by `#knight_moves`. This method accepts the target/end cell as its parameter, while the `#new` method accepts the origin/start. As `#knight_moves` starts with the target/end, it will select the next cell if it is less than the current value it holds, just like I had planned. It will trace back to the origin/start, and the array had to be reversed to finally make the origin/start as the start of the array.
+
+## Final Thoughts
+
+I am not proud of my project in this one. I think I haven't been able to optimize my code to make it shorter and more efficient. It works, yes, but I can't help but to think if I could make the code better. I will move on for now, maybe look into this repository after some time with a fresh and more experienced perspective.
+
+### My Other Projects
+
