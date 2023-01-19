@@ -1,5 +1,5 @@
 
-# Knight Travails Journal
+# Knight Travails
 
 __[Knight Travails](https://www.theodinproject.com/lessons/ruby-knights-travails)__
 
