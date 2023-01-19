@@ -1,5 +1,5 @@
 
-# Knight Travails
+# [Knight Travails](https://www.theodinproject.com/lessons/ruby-knights-travails)
 
 __[Knight Travails](https://www.theodinproject.com/lessons/ruby-knights-travails)__
 
